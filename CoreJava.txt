@@ -1,0 +1,149 @@
+
+
+  Basic Java
+
+  Q. Java is introduced by
+  A. James Gosling
+
+  Q.Find out valid declaration
+  1)public static void Main(String[] args)
+  2)public static int main(String[] args)
+  3)public static void main(String args)
+  4)public final synchronized strictfp void main(String[] args)
+  5)public static final synchronized strictfp void main(String[] args)
+  6)public static void main(String... args)
+  7)static public void main(String... args)
+ 
+Ans : 
+     1) Invalid - M from main is capital
+     2) Invalid - int return data type is not allowed, only void is allowed
+     3) Invalid - array symbol is not there
+     4) Invalid - static is missing
+     5) valid
+     6) valid - var args/var length args is allowed instead of array symbol
+     7) valid
+
+
+  Q. Before the class(outer) what are access modifiers allowed
+      outer class - public, abstract, final, default, strictfp
+      inner class - public, abstract, final, default, strictfp, private, protected
+
+
+     public ,private, protected
+
+     outer class - public, 
+
+
+  Q. Before constructor which modifiers are allowed?
+      public, private, protected, default
+
+   Q. what are the data types?
+       byte  - 1
+       short - 2
+       int - 4
+       long - 8      long temp=23L;
+       float - 4      float temp=23.3F;
+       double - 8
+       boolean - true/false
+       char - 2
+
+   Q. why the capacity of char is 2 byte?
+       As Java uses unicode, contains all human langs.
+
+
+   Q. what is typecasting?
+        converting from one data type into another
+
+        byte-short-int-long-float-double           (left to right => implicit)
+               char
+        int - char (explicit)
+        char - int  (implicit)
+
+  Q. what is default value of int local var, instance var and static var
+      int local => no default value,    value must be initialized before use
+      instance => 0
+      static => 0
+
+  Q. is break compulsory in switch case statement?
+      As far as the syntax is concern, its not compulsory, but you won't get expected output.
+
+  Q. is default compulsory in switch case statement?
+      its not compulsory, but its good practice to include default with every switch case.
+
+  
+  Q. What is Array
+   A - Collection of similar data types. It occupies continuous memory location. In Java, Array is an object.
+
+  valid declaration
+
+   int[] ary; valid => good practice to use this one, as this shows array first and then var
+   int ary[]; valid
+   int [] ary; valid
+
+Q. Given
+  int[] ary=new int[10];  or Employee[] emps=new Employee[10];
+  how many objects are created with above line?
+=> only one object of type array;
+
+   emps[0]=new  Employee(); //then first emp object is created.
+
+
+   int[] ary=new int[]; - invalid
+   int[] ary=new int[0]; - valid
+   int[] ary=new int[-5]; - valid  but at runtime -NegativeArraySizeException
+
+
+int[] x=new int[10]-----valid
+int[] x=new int['a']------valid 
+char,short and byte are implicitly converted  to int.
+var with long data type is not allowed.
+
+byte b=20;
+int[]x=new int[b];-----valid
+short l=30;
+int[]x=new int[l];-----valid
+int[]x=new int[10L];-----invalid
+
+
+int[]a=new int[]; -invalid
+int[]a=new int[3]; -valid
+int[][]a=new int[][]; -invalid
+int[][]a=new int[3][]; -valid
+int[][]a=new int[][4]; -invalid
+int[][]a=new int[3][4]; -valid
+int[][][]a=new int[3][4][5];-valid
+int[][][]a=new int[3][][5]; -invalid
+int[][][]a=new int[][4][5]; -invalid
+
+    
+   
+
+
+int[] x=new int[2147483647];----valid but @ runtime you may get following error
+because requires 2147483647*4 byte memory in Heap.
+Exception in thread "main" java.lang.OutOfMemoryError: Requested array size exceeds VM limit
+	at Demo.main(Demo.java:9)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

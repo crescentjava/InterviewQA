@@ -1,0 +1,231 @@
+
+
+INHERITANCE QUESTIONS
+=================
+
+1. why is inheritance?
+
+Inheriting the features of parent class into child class.
+In inheritance one class can inherit the properties (instance variables) and behavior (methods) of another class.
+
+2. why do we need inheritance?
+Inheritance supports code reuseability.
+
+3. difference between super and this keywords?
+super:
+can call super class variable,method or constructor
+
+this:
+can call variable, method or constructor of the same class
+
+
+Q What is casting?
+converting from one object type to another one.
+
+
+Diff blw upcasting and down casting?
+
+upcasting - converting from child object to parent object (implicit)
+downcasting - converting from parent object to child object (explicit)
+
+class Parent{..}
+class Child extends Parent{..}
+Parent p=new Parent();
+Child c=new Child();
+Parent p1=new Child(); //upcasting
+
+Child c2=(Child)p1; //downcasting
+
+
+
+what are the new things  added in interface in java 8?
+default method
+static methods
+
+What is Method Overloading? 
+same method name with different signature(diff parameters,no of parameters or sequence of parameters)
+
+e.g.
+
+  void show(){}
+  void show(int a){}
+
+What is Method overriding?
+same method and same signature in child class
+
+e.g.
+ class Parent
+ {
+      void show(){}
+ }
+
+class Child extends Parent
+{
+     void show(){}
+ }
+
+
+Difference between final, finally, finalize
+1) final
+    final can be used with var, method and class
+    with var - it becomes constant
+    with method - method cannot be overridden
+    with class - cannot be extended
+
+2) finally
+    finally block we use with exception handling
+    purpose - to close the resources
+                  e.g. file closing, database connection closing
+
+3) finalize
+   - method from Object class
+
+   Finalize is used to perform clean up processing just before object is garbage collected.
+
+
+Q what is covariant ?
+    can have different object in method overriding.
+
+   if the superclass method is returning superclass object then subclass overridden method may return either superclass object or subclass object.
+
+e.g.
+ class Parent
+ {
+      Parent show(){......}
+ }
+
+class Child extends Parent
+{
+     Child show(){}
+}
+
+
+Q. can we have differnt primitive type in method overriding?
+    No. It must be same.
+
+
+Q. What are the differnt inheritance type supported by Java
+     1) Single inheritance
+     2) Multilevel inheritance
+     3) Hierarchical inheritance
+
+(Note : Multiple inheritance is not supported by Java)
+
+how can we achieve inheritance in Java?
+using extends or implements
+
+
+Q can we override static or private or final methods?
+No
+
+Q Can we have constructor overriding ?
+   No
+
+Q Can we overload constructor?
+   Yes
+
+Q what are the access modifiers allowed for methods inside interface?
+   public and abstract
+
+Q what is interface?
+   contract between two parties
+
+
+
+Q how do you differentiate has-a and is-a relationship
+A
+     When Employee class contains Address class var - has-a
+     When Developer inherits Employee - Developer is-a Employee
+
+
+True/False
+class can extends another class - T
+class can extends another interface - F
+class can extends multiple classes - F
+interface can extends another interface - T
+interface can extends another class - F
+interface can extends multiple interfaces - T
+
+
+
+Q
+
+class Parent
+{
+      int a=10;
+
+      void show()
+      {
+             System.out.println("Value of a = "+a);
+      }
+}
+
+
+class Child extends Parent
+{
+
+       int a=20;
+
+      void show()
+      {
+             System.out.println("Value of a = "+a);
+      }
+}
+
+
+// from main method
+Parent p=new Child();
+System.out.println(p.a);
+p.show();
+
+=>10
+=> Value of a = 20
+
+data members are belonging to ref variable
+methods are belonging to object
+
+
+
+
+
+what is functional interface?
+interface with one abstract method 
+can have multiple default or static methods
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

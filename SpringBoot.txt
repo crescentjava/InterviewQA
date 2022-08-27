@@ -1,0 +1,168 @@
+Spring Boot Interview Questions
+
+
+Benefits
+
+- In built server
+- SpringBootApplication : 
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan
+- almost no configuration  (in spirng - its time consuming job for configuration file)
+- production ready features (Actuator)
+  app health(up,down)
+  request details(success,failure)
+  beans
+  metrics
+-standalone(desktop)
+	Takes an opinionated view of a platform where in spring Takes an unopinionated view
+
+
+What is actuator:
+production ready features
+ https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html
+by default : health,info 
+management.endpoints.web.exposure.include=*
+
+
+
+Profile
+Diff profile for diff environment
+  Development
+  Testing
+  Production
+
+properties
+Separate property file for separate environment
+yml - can use single file for all environment
+
+
+
+SpringBoot with REST
+@RestController - @Controller + @ResponseBody
+@RequestMapping
+@GetMapping
+@PostMapping
+@PutMapping
+@DeleteMapping
+@RequestBody
+
+
+Queryparameter
+@RequestParam
+uri parameter
+@PathVariable
+
+Service layer --------business logic
+@Service
+
+
+Dao layer
+ CrudRepository vs JPARepository
+https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html
+
+CrudRepository 
+PagingAndSortingRepository
+JpaRepository
+
+
+What does the @SpringBootApplication annotation do internally?
+
+As per the Spring Boot doc, the @SpringBootApplication annotation is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes. Spring Boot enables the developer to use a single annotation instead of using multiple. But, as we know, Spring provided loosely coupled features that we can use for each individual annotation as per our project needs.
+
+is it  possible to change the port of Embedded Tomcat server in Spring boot?
+
+Yes, it's possible to change the port. You can use the application.properties file to change the port. But you need to mention "server.port" (i.e. server.port=8081). Make sure you have application.properties in your project classpath; REST Spring framework will take care of the rest. If you mention server.port=0 , then it will automatically assign any available port.
+
+an we override or replace the Embedded Tomcat server in Spring Boot?
+
+Yes, we can replace the Embedded Tomcat with any other servers by using the Starter dependencies. You can use spring-boot-starter-jetty  or spring-boot-starter-undertow as a dependency for each project as you need.
+
+default server- Tomcat
+
+
+Explain what is thymeleaf and how to use thymeleaf?
+
+Thymeleaf is a server-side Java template engine used for web applications. It aims to bring natural template for your web application and can integrate well with Spring Framework and HTML5 Java web applications. To use Thymeleaf, you need to add the following code in the pom.xml file:
+
+
+<dependency>    
+<groupId>org.springframework.boot</groupId>    
+<artifactId>spring-boot-starter-thymeleaf</artifactId>    
+</dependency>  
+
+
+
+Jar - standalone app
+
+war - web app
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

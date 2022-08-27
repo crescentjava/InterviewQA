@@ -1,0 +1,64 @@
+What are the annotations used in TestNG?
+@Test
+@BeforeSuite
+@AfterSuite
+@BeforeTest
+@AfterTest
+@BeforeClass
+@AfterClass
+@BeforeMethod
+@AfterMethod
+
+How do you read data from excel?
+FileInputStream fis = new FileInputStream("path of excel file");
+XSSFWorkbook wb = new XSSFWorkbook(fis);
+XSSFWorksheet s = wb.getSheet("sheetname");
+String value = s.getRow(rowNum).getCell(cellNum).getStringCellValue();
+
+What is the use of xpath?
+It is used to find the WebElement in web page. It is very useful to identify the dynamic web elements.
+
+What are different types of locators?
+There are 8 types of locators and all the static methods of the By class.
+By.id()
+By.name()
+By.tagName()
+By.className()
+By.linkText()
+By.partialLinkText()
+By.xpath()
+By.cssSelector()
+
+What is difference between Assert and Verify?
+Assert
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

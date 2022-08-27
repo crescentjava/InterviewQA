@@ -1,0 +1,9 @@
+
+You should use immuatble object as a key in HashMap.
+
+If immutable, the object's hashcode wont change and it allows caching the hashcode of different keys which makes the overall retrieval process very fast. Also for mutable objects ,the hashCode() might be dependent on fields that could change, if this happens you wont be able to find the key (and its value) in the HashMap since hashCode() returns different value.
+
+we can have one null key and multiple null values.
+If you add one more null, it overrides on previous one.
+
+

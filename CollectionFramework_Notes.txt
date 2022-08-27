@@ -1,0 +1,219 @@
+var holds single info.
+Array holds homogenous.
+Collection can hold homogenous/hetrogenous.
+
+Difference between Array and Collection
+fixed in size-------growable in nature
+wrt performance Array is required.Because in collection entire collection is copied in another collection...
+Array -no underlying DS
+Collection - standard DS
+Array- manually searching,sorting
+Collection - readymade methods like contains,isEmpty
+
+
+
+Array itself gives facility for hetrogenous things
+e.g.
+Object []obj=new Object[10];
+
+obj[0]=new Student();
+obj[1]=new Customer();
+
+
+
+Collection
+Group of individual objects
+
+Collection Framework
+If defines several classes and interfaces which can be used a group of objects as single entity.
+
+In Java 
+Collection/Collection framework is not new ,these are just terminologies
+
+In java-collection .In C++-Container
+Collection Framework    STL(Standard Template Library)
+
+
+If we want to represent a group of individual objects as a single entity then we should go for collection.
+
+In general collection interface is considered as root interface of Collection Framework.
+
+There is no concrete class which implements Collection interface directly.
+
+Collection interface defines most common methods which are applicable for any collection objects.
+
+
+Framework - predefine classes and interfaces
+or we can call simply libraries.
+
+
+interface provides more info where class is just a dummy
+
+
+Difference between Collection and Collections
+Collection - interface
+Collections - utility class present in java.util package which defines several methods like searching,sorting
+              for collection objects.
+
+Collection-----List--------->ArrayList,LinkedList,Vector,Stack(subclass of Vector)
+
+Collection, List,ArrayList,LinkedList------------introduced in jdk 1.2
+Vector,Stack------introducted in jdk1.0
+Legacy classes - Vector,Stack(classes introducted in older version)
+
+It we want to represent a group of individual objects as a single entity where duplicates are allowed
+and insertion order preserved then we should go for List.
+
+
+Collection(1.2)---Set(1.2)------HashSet(1.2)-------LinkedHashSet(1.4) which is subclass of LinkedHashSet
+
+It we want to represent a group of individual objects as a single entity where duplicates are not allowed
+and insertion order not preserved then we should go for Set,HashSet.
+
+
+SortedSet - 
+
+It we want to represent a group of individual objects as a single entity where duplicates are not allowed
+but all objects should be inserted according to some sorting order then we should go for SortedSet.
+
+Collection(1.2)------Set(1.2)------SortedSet(1.2)----NavigableSet(1.6)------TreeSet(1.2)
+Later TreeSet was modified in 1.6
+
+NavigableSet - child interface of of SortedSet it defines several methods for navigation purpose.
+
+
+Queue inteface:
+-child interface of Collection.
+-If we want to represent a group of individual objects prior to processing then we should go for Queue.
+ex. - before sending a mail, allmail ids we have to store somewhere and in which order we saved, in the same
+order mailid's should be delivered(First in First out),for this requirement Queue concept is the best choice.
+ex.before sending sms all mobile numbers need to be stored.
+
+
+
+              Collection(1.2 version)
+              Queue(1.5 version)
+PriorityQueue  1.5        BlockingQueue  1.5
+                           LinkedBlockingQueue 1.5
+                           PriorityBlockingQueue 1.5
+
+
+
+whenever we store objects in collection , there is no relation of stored objects with each other.
+if we want to store relation
+rno -name
+ipaddress - domain,    then Map interface
+
+
+Collection,List,Set,SortedSet,NavigableSet and Queue meant for representing a group of individual objects.
+If we want to represent group of objects as key value pairs then we should go for Map interface.
+
+Map - both key and value are objects, duplicated keys are not allowed but values can be duplicated.
+
+                         Map 1.2
+HashMap 1.2      WeakHashMap 1.2    IdentityHashMap  1.4       Hashtable(child of abstract class Dictionary)1.0
+LinkedHashMap 1.4                                              Properties(subclass of Hashtable) 1.0
+
+
+
+Map----SortedMap(I) 1.2
+If we want to represent a group of value pairs according to some sorting order of keys then we should go for 
+SortedMap.
+
+
+Legacy classes - Hashtable,Properties
+
+
+Map(I)1.2-------SortedMap(I)1.2------NavigableMap(I)(1.6)--------TreeMap 1.2
+
+
+Thing which are coming from old generation called as legacy classes.
+
+
+                                    Collection(I)1.2
+            List1.2
+ArrayList 1.2  LinkedList 1.2     Vector 1.0
+                                  Properties 1.0 Legacy classes
+
+
+
+           Set(I) 1.2
+HashSet                   SortedSet(I)1.2
+LinkedHashSet 1.4         NavigableSet 1.6
+                          TreeSet 1.2
+
+            Queue1.5
+PriorityQueue      BlockingQueue
+                   PriorityBlockingQueue
+                   LinkedBlockingQueue
+
+
+            Map(I)1.2
+HashMap 1.2       WeakHashMap 1.2     IdentityHashMap 1.4   SortedMap 1.2    Hashtable 1.0(child of Dictionary)
+LinkedHashMap 1.4                                           NavigableMap 1.6
+                                                            TreeMap 1.2
+
+Sorting:
+Comparable----default sorting
+Comparator ----- customized sorting
+
+
+If your want to process/get object one by one from collection, you have to use cursors
+1)Enumeration(I)
+2)Iterator(I)
+3)ListIterator(I)
+
+
+Utility classes:
+1)Collections
+2)Arrays
+
+Arrays methods------searching(binary algo),sorting
+
+
+
+
+
+
+
+
+Java Versions
+
+    1 JDK Alpha and Beta (1995)
+    2 JDK 1.0 (January 23, 1996)
+    3 JDK 1.1 (February 19, 1997)
+    4 J2SE 1.2 (December 8, 1998)
+    5 J2SE 1.3 (May 8, 2000)
+    6 J2SE 1.4 (February 6, 2002)
+    7 J2SE 5.0 (September 30, 2004)
+    8 Java SE 6 (December 11, 2006)
+        8.1 Java 6 updates
+    9 Java SE 7 (July 28, 2011)
+        9.1 Java 7 updates
+    10 Java SE 8 (March 18, 2014)
+        10.1 Java 8 updates
+    11 Java SE 9 ---------------scheduled for 22 September 2016
+    12 Java SE 10
+    13 Implementations
+    14 References
+    15 External links
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

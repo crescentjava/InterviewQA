@@ -1,0 +1,395 @@
+Collection:
+Collection interface defines the most common methods which are applicable for any collection object.
+
+add(Object o) - adding individual object
+addAll(Collection c) - adding group of objects
+remove(Object o)
+removeAll(Collection c)-remove group of objects
+clear - remove all the objects
+retainAll(Collection c)
+To remove all objects except those present in c
+
+in evening batch - removing morning batch students-removeAll
+clear - batch is over - removing morning as well as evening batch students
+retainAll - remove all the students except morning batch people in evening batch
+
+isEmpty()
+size()
+contains(Object) - checking whether a particular object is available or not
+containsAll(Collection c) - group of objects are available or not
+
+
+c.toArray(); converting from Collection to Array
+Object[] a=c.toArray();
+
+Iterator it=c.iterator();
+
+Important methods of Collection
+-------------------------------
+boolean add(Object o)
+boolean addAll(Collection c)
+boolean remove(Object o)
+boolean remove(Object o)
+boolean removeAll(Collection c)
+boolean retainAll(Collection c)
+void clear()
+boolean contains(Object o)
+boolean containsAll(Collection c)
+boolean isEmpty()
+int size()
+Object[] toArray()
+Iterator iterator()
+
+
+
+List
+----
+How to differentiate 2 different objecs----------index position
+
+It is child interface of Collection
+If we want to represent a group of individual objects as a single entity where duplicates are allowed and insertion order must be preserved then we should go for List.
+
+We can differentiate duplicates by using index.
+
+We can preserve insertion order by using index, hence index play very important role in list interface.
+
+void add(int index,Object o)
+boolean addAll(int index,Collection c)
+Object get(int index)
+Object remove(int index)
+Object set(int index,Object new)
+to replace the element present at specified index with provided Object and returns old object
+
+int indexOf(Object o)
+returns index of first occurrence of 'o'
+int lastIndexOf(Object o)
+ListIterator listIterator(); special case of Iterator
+
+
+Methods more talk about index....
+
+
+
+ArrayList : 
+what are the standards?
+which datastructure is implemented?
+-The underlined data structure Resizable Array or Growable Array
+-duplicates are allowed
+-insertion order
+-Heterogenous object can be added*************
+only in TreeSet and TreeMap Heterogenous objects are not allowed.
+-null insertion is possible
+
+Constructor
+------------
+ArrayList l=new ArrayList();
+default initial capacity of ArrayList is - 10
+
+suppose you filled first 10 positions, new bigger object is created in new memory space, old one is eligible for garbage collection
+
+New capacity = (current capacity*3/2)+1
+             =10*3/2+1
+             =30/2+1
+             =16
+
+after filling 16 poisitions
+new capacity = 16*3/2+1
+             =25
+
+JDK 1.7 onwards 
+New capacity = (current capacity*3/2)
+ArrayList increments by 50%
+first time - 10
+after adding 11th elements- 15
+after adding 16the elements - 22
+                              33
+
+
+so initial size is 10 ,if we want to store 1000 objects you performance issue.
+ArrayList list=new ArrayList(int initialcapacity)
+ArrayList list=new ArrayList(Collection c);
+converting from any other collection to ArrayList
+
+
+To check ArrayList size:
+------------------------------------------------------------------------
+	static int getCapacity(ArrayList<?> l) throws Exception {
+        Field dataField = ArrayList.class.getDeclaredField("elementData");
+        dataField.setAccessible(true);
+        return ((Object[]) dataField.get(l)).length;
+    }
+	public static void main(String[] args) throws Exception {
+		ArrayList l=new ArrayList();  //capacity 0
+		//l.add(3);//capacity 10
+		for(int i = 0; i < 16; i++){
+			l.add(i);
+		}//capacity 15
+		
+		System.out.println(getCapacity(l));
+---------------------------------------------------------------------------
+ArrayList i=new ArrayList();
+l.add("A");
+l.add(10);
+l.add("A");
+l.add(null);
+System.out.println(l);//[A,10,A,null]
+l.remove(2);
+System.out.println(l);//[A,10,null]
+l.add(2,"M");
+l.add("N");
+System.out.println(l);//[A,10,M,null,N]
+
+
+
+What is purpose of Collection :
+Usually we can use Collections to hold and transfer objects from one place to another place, to provide support for this requirement every collection already implements Serializable and Cloneable interfaces.
+
+when we send data, most of the time receiver doesn't perform operations directly on objects, because if something goes wrong  we may not recover data,therefore every collection implements Cloneable.
+
+
+ArrayList and Vector implements RandomAccess
+to access arraylist with 0 position or
+to access arraylist with 1000 position or
+to access arraylist with 100000000000 position
+
+requires same time to access
+
+So ArrayList and Vector classes implements RandomAccess interface so that we can access any Random element with the same speed.
+Hence if our frequent operation is retrieval operation then ArrayList is the best choice.
+
+RandomAccess:
+present in java.util package
+It doesn't contain any methods and it is a Marker interface.
+
+ArrayList l1=new ArrayList();
+LinkedList l2=new LinkedList();
+System.out.println(l1 instanceof Serializable);//true
+System.out.println(l1 instanceof Cloneable);//true
+System.out.println(l1 instanceof RandomAccess);//true
+System.out.println(l2 instanceof RandomAccess);//false
+
+ArrayList is best choice if our frequent operation is retrieval operation(Because ArrayList implements RandomAccess interfaces)
+ArrayList is the worst choice if our frequent operation is insertion or deletion in the middle(Because several shift operations are required)
+
+Difference between ArrayList and Vector
+----------------------------------------
+ArrayList 
+- Every method present ArrayList is non synchronized
+-At a time multiple threads are allowed to operate on ArrayList Object and hence ArrayList is not threadsafe
+-Threads are not required to wait to operatre on ArrayList, hence relatively performance is high.
+-introduced in 1.2 version and it is non legacy class
+Vector
+-Every method present in LinkedList is synchronize
+-At a time only one thread is allowd to operate on Vector
+ object is threadsafe
+-Threads are required to wait to operate on Vector Object and hence relatively performance is low
+-introduced in 1.0 version and it is a legacy class
+
+
+How to get synchronized version of ArrayList Object
+-By default ArrayList  Object is non-synchronized but we can get synchronized version of ArrayList by using Collection class synchronizedList() method.
+
+public static List synchronizedList(List l)
+
+Non-cynchronized
+ArrayList l1=new ArrayList();
+synchronized
+List l=Collections.synchronizedList(l1);
+
+Similarly we can get synchronized version of Set,Map objects using the following methods of Collection class
+public static Set synchronizedSet(Set s);
+public static Set synchrArrayMap(Map m);
+
+
+LinkedList
+-----------
+-The underlying data structure is Doubly Linked List
+-Insertion order is preserved.
+-Duplicates are allowed.
+-Heterogeneous Objects are allowed.
+-Null insertion is possible.
+
+
+LinkedList implements Serializable and Clonable interfaces but not RandomAccess interface.
+
+LinkedList is the best choice if our frequent operation is insertion or deletion in the middle.
+
+LinkedList is the worst choice if our frequent operation is retrieval operation.
+
+Usually we can use LinkedList to implement stacks(LIFO) and queues(FIFO) to provide support for this requirement LinkedList class defines following specific methods.
+void addFirst();
+void addLast();
+Object getFirst();
+Object getLast();
+Object removeFirst();
+Object removeLast();
+
+
+LinkedList Constructors
+------------------------
+LinkedList l1=new LinkedList();
+creates an empty LinkedList object.
+no defualt size like ArrayList.added one by one element according to requirement.
+
+LinkedList l1=new LinkedList(Collection c);
+Creates an equivalent LinkedList object for the given Collection.
+
+
+Program:
+--------
+LinkedList l1=new LinkedList();
+l1.add("Sachin");
+l1.add(30);
+l1.add(null);
+l1.add("Sachin");
+l1.set(0,"Java");
+l1.add(0,"Oracle");
+l1.addFirst("ccc");
+System.out.println(l1);
+
+
+Difference between ArrayList and LinkedList
+-------------------------------------------
+ArrayList:
+-It is the best choice if our frequent operation is retrieval
+-ArrayList is the worst choice if our frequent operation is insertion or deletion
+-Underlying data structure for ArrayList is resizable or growable array.
+-ArrayList implements RandomAccess interface
+
+LinkedList:
+-It is the best choice if our operation is insertion and deletion
+-LinkedList is the worst choice if our frequent operation is retrieval operation
+-Underlying data structure is Double Linked List
+-LinkedList doesn't implement RandomAccess interface.
+
+Vector:
+-------
+-The underlying Data structure for the vector is resizable array or growable array.
+-Duplicate objects are allowed.
+-Insertion order is preserved.
+-null insertion is possible
+-Heterogeneous objects are allowed.
+-Vector class implements Serializable,Cloneable interface
+-Most of the methods present in Vector are synchronized.Hence Vector object is Thread-safe.
+-Best choice if the frequent operation is retrieval.
+
+
+Vector specific methods
+------------------------
+for adding objects
+add(Object o)  [from Collection - List(I)]
+add(int index,Object o) [from List]
+addElement(Object o) [from Vector]
+
+for removing objects
+remove(Object o)  [from Collection]
+removeElement(Object o) [from Vector]
+remove(int index) [from List]
+removeElementAt(int index) [from Vector]
+clear() [from Collection]
+removeAllElements() [from Vector]
+
+for Accessing Elements
+Object get(int index)  [from Collection]
+Object elementAt(int index)  [from Vector]
+Object firstElement() [from Vector]
+Object lastElement() [from Vector]
+
+Other methods:
+int size();
+int capacity();  ex.capcity of classroom is 600 but now 200students  -----600 capacity -200 actual
+Enumeration elements();
+
+
+Vector class constructors:
+---------------------------
+1)Vector v=new Vector();
+  default capacity - 10
+  when you add 11th element
+  new capacity=current capacity*2;
+2)Vector v=new Vector(int initialcapacity)
+  if I want to add 1000 objects, use this constructor to improve performance.
+  Now If I want to add 1001 objects
+  new capacity=1000*2;
+
+  if you are sure add additional 2,3 objects only abover constructor is not recommended.
+3)Vector v=new Vector(int initialcapacity,int incrementalcapacity)
+
+Vector v=new Vector(1000,5);
+4)
+Vector v=new Vector(Collection c);
+Creates an equivalent Vector object for the given collection
+
+
+Program
+-------
+Vector v=new Vector();
+System.out.println(v.capacity());
+for(int i=1;i<=10;i++)
+{
+   v.addElement(i);
+}
+System.out.println(v.capacity());
+v.addElement("A");
+System.out.println(v.capacity());
+System.out.println(v);
+
+Program 2
+-----------
+Vector v=new Vector();
+System.out.println(v.capacity());
+for(int i=1;i<=10;i++)
+{
+   v.addElement(i);
+}
+System.out.println(v.capcity());
+v.addElement("A");
+System.out.println(v.capacity());
+System.out.println(v);
+
+Program 3
+---------
+Vector v=new Vector(10,5);
+System.out.println(v.capacity());
+for(int i=1;i<=10;i++)
+{
+   v.addElement(i);
+}
+System.out.println(v.capcity());
+v.addElement("A");
+System.out.println(v.capacity());
+System.out.println(v);
+
+
+
+Stack
+-----
+-It is a child class of Vector.
+-It is specially designed class for Last In First Out order(LIFO)
+
+only one constructor
+---------------------
+Stack s=new Stack();
+
+Methods
+-------
+push(Object o)
+pop()
+peek() - return without removal
+empty()-naming convention not up to mark(legacy class)
+search("A") - returns offset
+
+e.g.
+in stack stored A B C(top)
+search("A")=====>3
+search("z")=====>-1 as there is no item present.
+
+demo program:
+-------------
+Stack s=new Stack();
+s.push("A");
+s.push("B");
+s.push("C");
+System.out.println(s);//[A,B,C] insertion order preserved.
+System.out.println(s.search("A"));//3
+System.out.println(s.search("z"));//-1

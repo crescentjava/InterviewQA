@@ -1,0 +1,281 @@
+
+
+  Spring is developed by Whom?
+
+  Developed by Rod Johnson.
+
+  When the container is started?
+  When we create the object of ApplicationContext, container is started.
+
+  How to create object of ApplicationContext?
+  ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+
+
+  What is difference between ApplicationContext and BeanFactory?
+  BeanFactory(I)
+  lazy loading
+  BeanFactory doesn't support autoscanning
+  supports two scopes only : singleton,prototype
+  deprecated
+It doesn’t supports internationalization
+  It doesn’t supports annotation based dependency   
+  use to create  small app 
+
+
+  ApplicationContext(I)
+  Early loading
+ It supports internationalization 
+It supports annotation based dependency
+  supports scopes : singleton, prototype, request, session, global-session
+
+
+  use to create enterprise app
+  It supports internationalization, event handling, AOP.
+
+
+  How to inject the object?
+  setter injection
+  constructor injection
+
+
+  setter injection vs constructor injection
+
+  setter
+      partial update
+
+  constructor
+      complete update
+      constructor arguments for mandatory dependencies and setters for optional ones.
+      e.g. Thread(Runnable target)
+
+  What Is the Default Bean Scope in Spring Framework?
+      
+   By default, a Spring Bean is initialized as a singleton.
+
+
+What are different bean scopes in Spring?
+There are 5 types of bean scopes supported in spring
+
+singleton – Scopes a single bean definition to a single object instance per Spring IoC container.
+prototype – Return a new bean instance each time when requested
+request – Return a single bean instance per HTTP request.
+session – Return a single bean instance per HTTP session.
+globalSession – Return a single bean instance per global HTTP session.
+  Scopes :
+   singleton
+prototype
+request
+session
+global-session
+
+
+Are Singleton Beans Thread-Safe?
+No, singleton beans are not thread-safe, as thread safety is about execution, whereas the singleton is a design pattern focusing on creation. Thread safety depends only on the bean implementation itself.
+
+
+
+
+How can you configure Spring in your application?
+XML based configuration
+Java based configuration
+Annotation based configuration
+
+In Spring Java based configuration, you inject all dependencies using java class only. You can use @Configuaration and @Bean annotations to do it.
+
+You can do dependency injection via annotation also instead of XML configuration. You can define bean autowiring using annotations. You can use @Component,@Repository,@Service and @Controller annotation to configure bean in Spring application.
+
+
+  What are the major features in different versions of Spring Framework?
+
+Spring 2.5 This version was released in 2007. It was the first version which supported annotations.
+
+
+Spring 3.0		This version was released in 2009. It made full-fledged use of improvements in Java5 and also provided support to JEE6.
+Spring 4.0		 This version was released in 2013. This was the first version to provide full support to Java 8.
+Spring 5.0                    supports Java 9
+
+
+What is a Spring bean configuration file?
+A Spring bean configuration file is an XML file. Convention is "applicationContext.xml"
+
+
+
+What is inversion of control? Explain with suitable example.
+------------------------------------------------------------
+
+In the traditional programming style, developers write code to instantiate dependent objects. 
+Giving the control of object instantiation from developer to the IOC container is "Inversion of Control"
+
+Following example illustrates it -
+
+public class TextEditor {
+
+    private SpellChecker checker;
+
+    public TextEditor(SpellChecker checker) {
+        this.checker= checker;
+    }
+}
+
+In this example TextEditor dependes on SpellChecker. If you want to instantiate TextEditor, 
+you must first create instance of SpellChecker. Without IOC one would do this as follows
+
+SpellChecker checker = new SpellChecker();
+TextEditor textEditor = new TextEditor(checker);
+
+If you use IOC container like Spring then Spring will instantiate the objects for you.
+Spring provides factory methods to get access to the managed objects.
+
+TextEditor textEditor = (TextEditor)factory.getBean("textEditor");
+
+This brings flexibility. If you have to modify the dependency then it can be done independently without modifying the source code.
+
+
+
+Bean life cycle
+ POJO style
+ InitializingBean, DisposableBean
+ JSR annotations
+
+
+implements InitializingBean,DisposableBean{
+
+@Override
+	public void destroy() throws Exception {
+		System.out.println("From destroy");
+		
+	}
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("after propertiesset");
+		
+	}
+
+AbstractApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		applicationContext.registerShutdownHook();
+
+Servlet
+ 1)implements Servlet
+ 2)extends GenericServlet
+ 3)extends HttpServlet
+
+
+
+ POJO style
+
+
+without implementing or extending
+public void init()
+	{
+		System.out.println("From init method");
+	}
+	
+	public void destroy()
+	{
+		System.out.println("From destroy");
+	}
+
+
+<bean id="employee" class="com.capgemini.Employee" init-method="init" destroy-method="destroy">
+
+beans default-init-method="init" default-destroy-method="destroy" 
+
+
+JSR Annotations
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@PostConstruct
+    public void initializeCircle()
+    {
+    	System.out.println("Init from circle");
+    }
+	@PreDestroy
+    public void destroyCircle()
+    {
+    	System.out.println("Destroy from circle");
+    }
+
+
+ Sterotype annotations
+  Component
+  Controller
+  Repository
+  Service
+
+factory pattern
+BeanFactory  provides a factory pattern which separates the dependencies like initialization, creation and access of the objects from your actual program logic.
+What is the Factory Method Pattern?
+In Java applications, you might be often using the new operator to create an object of a class. This is often fine for small Java programs. But when you work on large scale enterprise class applications, the amount of code to create objects will gradually increase and will become scattered across the application. If class names are hard coded in such code, the complexities of managing the code will keep increasing as you add new classes to the application. To address such concerns, you can use the factory method pattern
+
+
+What is @Qualifier annotation in Spring?
+You can have more than one bean of same type in your XML configuration but you want to autowire only one of them ,so @Qualifier removes confusion created by @Autowired by declaring exactly which bean is to autowired.
+
+
+
+
+
+
+
+
+
+
+
+
+Autowiring feature of spring framework enables you to inject the object dependency implicitly. It internally uses setter or constructor injection. Autowiring can't be used to inject primitive and string values.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
